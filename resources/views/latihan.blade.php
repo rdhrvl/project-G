@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Perhitungan Matematika</h1>
+    <a href="{{ url('tambah') }}">Tambah</a>
+    <a href="{{ url('kurang') }}">Kurang</a>
+    <a href="{{ url('bagi') }}">Bagi</a>
+    <a href="{{ url('kali') }}">Kali</a>
+    <a href="{{ route('latihan') }}">Kembali</a>
+</body>
+
+</html>
