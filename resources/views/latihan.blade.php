@@ -14,7 +14,7 @@
     <a href="{{ url('kurang') }}">Kurang</a>
     <a href="{{ url('bagi') }}">Bagi</a>
     <a href="{{ url('kali') }}">Kali</a>
-    <a href="{{ route('latihan') }}">Kembali</a>
+    <a href="{{ url()->previous() }}">Kembali</a>
 </body>
 
 </html>

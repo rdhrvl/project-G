@@ -39,7 +39,7 @@ class LatihanController extends Controller
         $angka1 = $request->angka_1;
         $angka2 = $request->input('angka_2');
 
-        $jumlahkurang = $angka1 + $angka2;
+        $jumlahkurang = $angka1 - $angka2;
         return view('kurang', compact('jumlahkurang'));
     }
     public function kali()

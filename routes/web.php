@@ -1,11 +1,13 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LatihanController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('login')->name('login');
+// });
 
 Route::get('latihan', [LatihanController::class, 'index'])->name('latihan');
 Route::get('tambah', [LatihanController::class, 'tambah'])->name('tambah');
@@ -18,3 +20,10 @@ Route::post('action-tambah', [LatihanController::class, 'actionTambah'])->name('
 Route::post('action-kurang', [LatihanController::class, 'actionKurang'])->name('action-kurang');
 Route::post('action-kali', [LatihanController::class, 'actionKali'])->name('action-kali');
 Route::post('action-bagi', [LatihanController::class, 'actionBagi'])->name('action-bagi');
+
+// Profile
+
+Route::get('profile', [ProfileController::class, 'index']);
+
+// Login
+Route::get('/', [LoginController::class, 'index'])->name('login');
