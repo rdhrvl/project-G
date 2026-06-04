@@ -19,21 +19,24 @@
             <div class="col-lg-5 col-12">
                 <div id="auth-left">
                     <div class="auth-logo">
-                        <a href="/"><img src="{{ asset('template/dist/assets/images/logo/logo.png') }}"
+                        <a href="dashboard"><img src="{{ asset('template/dist/assets/images/logo/logo.png') }}"
                                 alt="Logo"></a>
                     </div>
                     <h1 class="auth-title">Log in.</h1>
                     <p class="auth-subtitle mb-5">Log in with your data that you entered during registration.</p>
 
-                    <form action="{{ url('latihan') }}">
+                    <form action="{{ route('action-login') }}" method="post">
+                        @csrf
                         <div class="form-group position-relative has-icon-left mb-4">
-                            <input type="text" class="form-control form-control-xl" placeholder="Username">
+                            <input type="email" class="form-control form-control-xl" placeholder="email"
+                                name="email">
                             <div class="form-control-icon">
                                 <i class="bi bi-person"></i>
                             </div>
                         </div>
                         <div class="form-group position-relative has-icon-left mb-4">
-                            <input type="password" class="form-control form-control-xl" placeholder="Password">
+                            <input type="password" class="form-control form-control-xl" placeholder="Password"
+                                name="password">
                             <div class="form-control-icon">
                                 <i class="bi bi-shield-lock"></i>
                             </div>
@@ -44,13 +47,13 @@
                                 Keep me logged in
                             </label>
                         </div>
-                        <button class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Log in</button>
+                        <button type="submit" class="btn btn-primary btn-block btn-lg shadow-lg mt-5">Log in</button>
                     </form>
                     <div class="text-center mt-5 text-lg fs-4">
-                        <p class="text-gray-600">Don't have an account? <a href="auth-register.html"
+                        <p class="text-gray-600">Don't have an account? <a href="{{ url('register') }}"
                                 class="font-bold">Sign
                                 up</a>.</p>
-                        <p><a class="font-bold" href="auth-forgot-password.html">Forgot password?</a>.</p>
+                        <p><a class="font-bold" href="{{ url('forgot-password') }}">Forgot password?</a>.</p>
                     </div>
                 </div>
             </div>
