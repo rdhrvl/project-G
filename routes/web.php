@@ -31,8 +31,10 @@ Route::get('/', [LoginController::class, 'index'])->name('login');
 Route::post('action-login', [LoginController::class, 'actionLogin'])->name('action-login');
 Route::post('action-logout', [LoginController::class, 'actionLogout'])->name('action-logout');
 
-// Route::middleware('auth')->group(function() {})
+Route::middleware('auth')->group(function () {
+    Route::get('dashboard', function () {
+        return view('dashboard.index');
+    });
+});
 
-Route::get('dashboard', function () {
-    return view('dashboard.index');
-})->middleware('auth');
+Route::resource('user', \App\Http\Controllers\UserController::class);

@@ -34,7 +34,7 @@
             </div>
             <div class="page-content">
                 <div class="row">
-                    <div class="col-12 col-lg-9">
+                    <div class="col-12 col-lg-12">
                         @yield('content')
                     </div>
                 </div>
