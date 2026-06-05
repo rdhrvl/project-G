@@ -38,3 +38,4 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::resource('user', \App\Http\Controllers\UserController::class);
+Route::resource('role', \App\Http\Controllers\RoleController::class);

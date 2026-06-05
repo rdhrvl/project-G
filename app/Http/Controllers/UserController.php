@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use RealRashid\SweetAlert\Facades\Alert;
+
 
 class UserController extends Controller
 {
@@ -16,6 +18,8 @@ class UserController extends Controller
         // $users = User::latest()->get();
         $users = User::orderByDesc('id')->get();
         $title = "User Management";
+        $text = "Are you sure you want to delete?";
+        confirmDelete("Delete User", $text);
         return view('user.index', compact('users', 'title'));
     }
 
@@ -33,7 +37,13 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+        $validate = $request->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:6'
+        ]);
         User::create($request->all());
+        toast('User Successfully Created', 'success');
         return redirect()->to('user');
     }
 
@@ -71,6 +81,7 @@ class UserController extends Controller
         }
 
         User::find($id)->update($data);
+        toast('User Successfully Updated', 'success');
         return redirect()->to('user');
     }
 
@@ -79,6 +90,7 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
+
         User::find($id)->delete();
         return redirect()->to('user');
     }

@@ -111,7 +111,7 @@
                                     <a href="{{ route('user.create') }}">Create User</a>
                                 </li>
                                 <li class="submenu-item ">
-                                    <a href="layout-vertical-navbar.html">Role</a>
+                                    <a href="{{ route('role.index') }}">Role</a>
                                 </li>
                                 <li class="submenu-item ">
                                     <a href="layout-horizontal.html">Create Role</a>
