@@ -27,11 +27,16 @@
                             <td>{{ $user->name ?? '' }}</td>
                             <td>{{ $user->email }}</td>
                             <td>
-                                <a href="" class="btn btn-success icon">
-                                    <i class="bi bi-pencil"></i>
-                                    Edit</a> <a href="" class="btn btn-danger icon">
-                                    <i class="bi bi-trash"></i>
-                                    Delete</a>
+                                <a href="{{ route('user.edit', $user->id) }}" class="btn btn-success icon">
+                                    <i class="bi bi-pencil"></i></a>
+                                <form action="{{ route('user.destroy', $user->id) }}" method="post" class="d-inline">
+                                    @csrf
+                                    @method('DELETE')
+
+                                    <button class="btn btn-danger">
+                                        <i class="bi bi-trash-fill"></i>
+                                    </button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach
