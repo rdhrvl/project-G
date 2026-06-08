@@ -17,7 +17,7 @@
                         <li class="sidebar-title">Menu</li>
 
                         <li class="sidebar-item active ">
-                            <a href="index.html" class='sidebar-link'>
+                            <a href="{{ url('dashboard') }}" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>
                                 <span>Dashboard</span>
                             </a>
@@ -117,6 +117,13 @@
                                     <a href="layout-horizontal.html">Create Role</a>
                                 </li>
                             </ul>
+                        </li>
+
+                        <li class="sidebar-item">
+                            <a href="{{ route('locker.index') }}" class='sidebar-link'>
+                                <i class="bi bi-grid-fill"></i>
+                                <span>Locker Management</span>
+                            </a>
                         </li>
 
                         <li class="sidebar-title">Forms &amp; Tables</li>
