@@ -1,9 +1,12 @@
 <?php
 
+use App\Http\Controllers\KeysController;
 use App\Http\Controllers\LatihanController;
 use App\Http\Controllers\LockerController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\MajorController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
@@ -42,3 +45,6 @@ Route::resource('user', \App\Http\Controllers\UserController::class);
 Route::resource('role', \App\Http\Controllers\RoleController::class);
 
 Route::resource('locker', LockerController::class);
+Route::resource('major', MajorController::class);
+Route::resource('key', KeysController::class);
+Route::resource('student', StudentController::class);

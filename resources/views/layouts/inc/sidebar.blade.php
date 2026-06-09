@@ -119,41 +119,32 @@
                             </ul>
                         </li>
 
-                        <li class="sidebar-item">
+                        {{--  <li class="sidebar-item">
                             <a href="{{ route('locker.index') }}" class='sidebar-link'>
                                 <i class="bi bi-grid-fill"></i>
                                 <span>Locker Management</span>
                             </a>
-                        </li>
-
-                        <li class="sidebar-title">Forms &amp; Tables</li>
+                        </li>  --}}
 
                         <li class="sidebar-item  has-sub">
                             <a href="#" class='sidebar-link'>
                                 <i class="bi bi-hexagon-fill"></i>
-                                <span>Form Elements</span>
+                                <span>Locker Management</span>
                             </a>
                             <ul class="submenu ">
                                 <li class="submenu-item ">
-                                    <a href="form-element-input.html">Input</a>
+                                    <a href="{{ route('locker.index') }}">Locker</a>
                                 </li>
                                 <li class="submenu-item ">
-                                    <a href="form-element-input-group.html">Input Group</a>
+                                    <a href="{{ route('key.index') }}">Key</a>
                                 </li>
                                 <li class="submenu-item ">
-                                    <a href="form-element-select.html">Select</a>
-                                </li>
-                                <li class="submenu-item ">
-                                    <a href="form-element-radio.html">Radio</a>
-                                </li>
-                                <li class="submenu-item ">
-                                    <a href="form-element-checkbox.html">Checkbox</a>
-                                </li>
-                                <li class="submenu-item ">
-                                    <a href="form-element-textarea.html">Textarea</a>
+                                    <a href="{{ route('major.index') }}">Major</a>
                                 </li>
                             </ul>
                         </li>
+                        <li class="sidebar-title">Forms &amp; Tables</li>
+
 
                         <li class="sidebar-item  ">
                             <a href="form-layout.html" class='sidebar-link'>
