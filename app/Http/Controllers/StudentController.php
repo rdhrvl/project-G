@@ -16,10 +16,12 @@ class StudentController extends Controller
         // $users = User::orderBy('id', 'desc')->get();
         // $users = User::latest()->get();
         $students = Student::with('major')->orderByDesc('id')->get();
+        $majors = Major::get();
+
         $title = "Student Management";
         $text = "Are you sure you want to delete?";
         confirmDelete("Delete Student", $text);
-        return view('student.index', compact('students', 'title'));
+        return view('student.index', compact('students', 'title', 'majors'));
     }
 
     /**
@@ -27,7 +29,7 @@ class StudentController extends Controller
      */
     public function create()
     {
-        $title = "Create New Roles";
+        $title = "Create New Student";
         $majors = Major::get();
         return view('student.create', compact('title', 'majors'));
     }
@@ -58,11 +60,13 @@ class StudentController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Request $request, string $id)
     {
         $title = "Edit Student";
         $edit = Student::find($id);
-        return view('student.edit', compact('title', 'edit'));
+        $majors = Major::get();
+        $students = Student::with('major')->orderByDesc('id')->get();
+        return view('student.edit', compact('title', 'edit', 'majors', 'students'));
     }
 
     /**
@@ -71,14 +75,10 @@ class StudentController extends Controller
     public function update(Request $request, string $id)
     {
         $data = [
+            'major_id' => $request->major_id,
             'name' => $request->name,
-            'is_active' => $request->is_active
-            // 'password' => $request->password,
+            'phone' => $request->phone,
         ];
-        // Jika user Input Password
-        if (filled($request->is_active)) {
-            $data['is_active'] = $request->is_active;
-        }
 
         Student::find($id)->update($data);
         toast('User Successfully Updated', 'success');

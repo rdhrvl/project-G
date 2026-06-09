@@ -43,8 +43,8 @@
                             <td>
                                 <a href="{{ route('locker.edit', $locker->id) }}" class="btn btn-success icon">
                                     <i class="bi bi-pencil"></i></a>
-                                <a href="{{ route('locker.destroy', $locker->id) }}" class="btn btn-danger"
-                                    data-confirm-delete="true">Delete</a>
+                                <a href="{{ route('locker.destroy', $locker->id) }}" class="btn btn-danger icon"
+                                    data-confirm-delete="true"><i class="bi bi-trash"></i></a>
 
                             </td>
                         </tr>

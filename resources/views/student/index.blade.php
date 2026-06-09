@@ -16,7 +16,8 @@
                     <tr>
                         <th>No</th>
                         <th>Name</th>
-                        <th>Status</th>
+                        <th>Phone Number</th>
+                        <th>Major</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -25,25 +26,20 @@
                         <tr>
                             <td>{{ $index += 1 }}</td>
                             <td>{{ $student->name ?? '' }}</td>
+                            <td>{{ $student->phone ?? '' }}</td>
                             <td>
-                                @if ($student->status == 1)
+                                <span class="badge text-white bg-primary">{{ $student->major->name ?? '' }}</span>
+                                {{--  @if ($edit->major_id == $majors->name)
                                     <span class="badge text-white bg-primary">Active</span>
                                 @else
                                     <span class="badge text-white bg-danger">Inactive</span>
-                                @endif
+                                @endif  --}}
                             </td>
                             <td>
                                 <a href="{{ route('student.edit', $student->id) }}" class="btn btn-success icon">
                                     <i class="bi bi-pencil"></i></a>
-                                <form action="{{ route('student.destroy', $student->id) }}" method="post" class="d-inline"
-                                    data-confirm-delete="true">
-                                    @csrf
-                                    @method('DELETE')
-
-                                    <button class="btn btn-danger">
-                                        <i class="bi bi-trash-fill"></i>
-                                    </button>
-                                </form>
+                                <a href="{{ route('student.destroy', $student->id) }}" class="btn btn-danger icon"
+                                    data-confirm-delete="true"><i class="bi bi-trash"></i></a>
                             </td>
                         </tr>
                     @endforeach

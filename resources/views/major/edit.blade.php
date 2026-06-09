@@ -8,7 +8,7 @@
             </div>
         </div>
         <div class="card-body">
-            <form action="{{ route('major.update', $edit->id) }}" method="post">
+            <form action="{{ route('major.edit', $edit->id) }}" method="post">
                 @csrf
                 @method('PUT')
                 <div class="mb-3">

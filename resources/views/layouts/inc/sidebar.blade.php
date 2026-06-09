@@ -128,12 +128,15 @@
 
                         <li class="sidebar-item  has-sub">
                             <a href="#" class='sidebar-link'>
-                                <i class="bi bi-hexagon-fill"></i>
+                                <i class="bi bi-grid-1x2-fill"></i>
                                 <span>Locker Management</span>
                             </a>
                             <ul class="submenu ">
                                 <li class="submenu-item ">
                                     <a href="{{ route('locker.index') }}">Locker</a>
+                                </li>
+                                <li class="submenu-item ">
+                                    <a href="{{ route('student.index') }}">Student</a>
                                 </li>
                                 <li class="submenu-item ">
                                     <a href="{{ route('key.index') }}">Key</a>
