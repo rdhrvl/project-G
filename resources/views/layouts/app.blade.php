@@ -16,6 +16,9 @@
     <link rel="stylesheet" href="{{ asset('template/dist/assets/vendors/bootstrap-icons/bootstrap-icons.css') }}">
     <link rel="stylesheet" href="{{ asset('template/dist/assets/css/app.css') }}">
     <link rel="shortcut icon" href="{{ asset('template/dist/assets/images/favicon.svgs') }}" type="image/x-icon">
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+    @livewireStyles
+
 </head>
 
 <body>
@@ -35,7 +38,7 @@
             <div class="page-content">
                 <div class="row">
                     <div class="col-12 col-lg-12">
-                        @yield('content')
+                        {{ $slot }}
                     </div>
                 </div>
             </div>
@@ -60,7 +63,7 @@
     <script src="{{ asset('template/dist/assets/js/pages/dashboard.js') }}"></script>
 
     <script src="{{ asset('template/dist/assets/js/main.js') }}"></script>
-
+    @livewireScripts
     @include('sweetalert::alert')
 
     @include('sweetalert::alert', ['cdn' => 'https://cdn.jsdelivr.net/npm/sweetalert2@9'])

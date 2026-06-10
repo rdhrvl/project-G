@@ -2,29 +2,20 @@
 
 use App\Http\Controllers\InstructorController;
 use App\Http\Controllers\KeysController;
-use App\Http\Controllers\LatihanController;
 use App\Http\Controllers\LockerController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MajorController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\StudentController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 // Route::get('/', function () {
 //     return view('login')->name('login');
 // });
 
-Route::get('latihan', [LatihanController::class, 'index'])->name('latihan');
-Route::get('tambah', [LatihanController::class, 'tambah'])->name('tambah');
-Route::get('kurang', [LatihanController::class, 'kurang'])->name('kurang');
-Route::get('kali', [LatihanController::class, 'kali'])->name('kali');
-Route::get('bagi', [LatihanController::class, 'bagi'])->name('bagi');
-
-
-Route::post('action-tambah', [LatihanController::class, 'actionTambah'])->name('action-tambah');
-Route::post('action-kurang', [LatihanController::class, 'actionKurang'])->name('action-kurang');
-Route::post('action-kali', [LatihanController::class, 'actionKali'])->name('action-kali');
-Route::post('action-bagi', [LatihanController::class, 'actionBagi'])->name('action-bagi');
+Route::livewire('/post/create', 'pages::post.create');
 
 // Profile
 
@@ -42,8 +33,8 @@ Route::middleware('auth')->group(function () {
     });
 });
 
-Route::resource('user', \App\Http\Controllers\UserController::class);
-Route::resource('role', \App\Http\Controllers\RoleController::class);
+Route::resource('user', UserController::class);
+Route::resource('role', RoleController::class);
 
 Route::resource('locker', LockerController::class);
 Route::resource('major', MajorController::class);
