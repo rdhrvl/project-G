@@ -45,12 +45,12 @@ class InstructorController extends Controller
             [
                 'major_id' => 'required',
                 'name' => 'required',
-                'phone' => 'nullable',
-                'email' => 'required',
-                'password' => 'required'
+                'phone' => 'nullable|min:9',
+                'email' => 'required|unique:users,email',
+                'password' => 'required|min:6'
             ],
             [
-                'major.required' => 'Major is required.',
+                'major_id.required' => 'Major is required.',
                 'name.required' => 'Student name is required.',
                 'email.required' => 'Email is required.',
                 'email.unique' => 'Email is Already Exists.',
@@ -106,6 +106,20 @@ class InstructorController extends Controller
      */
     public function update(Request $request, Instructor $instructor)
     {
+        $validate = $request->validate(
+            [
+                'major_id' => 'required',
+                'name' => 'required',
+                'phone' => 'nullable',
+                'email' => 'required|unique:users,email',
+            ],
+            [
+                'major_id.required' => 'Major is required.',
+                'name.required' => 'Student name is required.',
+                'email.required' => 'Email is required.',
+                'email.unique' => 'Email is Already Exists.',
+            ]
+        );
         try {
             $dataUser = [
                 'name' => $request->name,

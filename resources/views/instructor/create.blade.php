@@ -15,7 +15,7 @@
                     <input type="text" name="name"
                         class="form-control @error('name') is-invalid
                     @enderror"
-                        placeholder="Enter Student Name" value="{{ old('name') }}">
+                        placeholder="Enter Instructor Name" value="{{ old('name') }}">
                     @error('name')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -24,7 +24,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="">Major *</label>
-                    <select class="form-select @error('phone') is-invalid
+                    <select class="form-select @error('major_id') is-invalid
                     @enderror" name="major_id"
                         id="">
                         <option value="">--Select Major--</option>
@@ -55,7 +55,7 @@
                     <input type="email" name="email"
                         class="form-control @error('email') is-invalid
                     @enderror"
-                        placeholder="Enter User Email" value="{{ old('email') }}">
+                        placeholder="Enter Email" value="{{ old('email') }}">
                     @error('email')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -67,7 +67,7 @@
                     <input type="password" name="password"
                         class="form-control @error('password') is-invalid
                     @enderror"
-                        placeholder="Enter User Password">
+                        placeholder="Enter Password">
                     @error('password')
                         <div class="invalid-feedback">
                             {{ $message }}

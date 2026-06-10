@@ -13,8 +13,8 @@
                 @method('PUT')
                 <div class="mb-3">
                     <label for="">Name *</label>
-                    <input type="text" name="name" class="form-control" value="{{ $edit->name }}"
-                        placeholder="Enter Instructor Name" required>
+                    <input type="text" name="name" class="form-control" value="{{ old('name') ?? $edit->name }}"
+                        placeholder="Enter Instructor Name">
                 </div>
                 <div class="mb-3">
                     <label for="">Major *</label>
@@ -24,15 +24,46 @@
                                 {{ $major->name }}</option>
                         @endforeach  --}}
                         @foreach ($majors as $major)
-                            <option value="{{ $major->id }}" {{ $major->id == $edit->major_id ? 'selected' : '' }}>
+                            <option value="{{ $major->id }}" {{ ($major->id == old('major_id') ? 'selected' : $major->id == $edit->major_id) ? 'selected' : '' }}>
                                 {{ $major->name }}</option>
                         @endforeach
                     </select>
                 </div>
+                 <div class="mb-3">
+                    <label for="">Phone *</label>
+                    <input type="number" name="phone"
+                        class="form-control @error('phone') is-invalid
+                    @enderror"
+                        placeholder="Enter Phone Number Ex:0812345678" value="{{ old('phone') ?? $edit->phone }}">
+                    @error('phone')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
                 <div class="mb-3">
-                    <label for="">Name *</label>
-                    <input type="number" name="phone" value="{{ $edit->phone }}" class="form-control"
-                        placeholder="Enter Phone Number Ex:0812345678" required>
+                    <label for="">Email *</label>
+                    <input type="email" name="email"
+                        class="form-control @error('email') is-invalid
+                    @enderror"
+                        placeholder="Enter Email" value="{{ old('email') ?? $edit->user->email }}">
+                    @error('email')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
+                <div class="mb-3">
+                    <label for="">Password *</label>
+                    <input type="password" name="password"
+                        class="form-control @error('password') is-invalid
+                    @enderror"
+                        placeholder="Enter Password">
+                    @error('password')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
                 <button type="submit" class="btn btn-primary">Save</button>
                 <a href="{{ url()->previous() }}" class="text-secondary">Back</a>
