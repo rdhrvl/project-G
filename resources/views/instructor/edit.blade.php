@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Create New Student')
+@section('title', 'Create New Instructor')
 @section('content')
     <div class="card">
         <div class="card-header">
@@ -8,13 +8,13 @@
             </div>
         </div>
         <div class="card-body">
-            <form action="{{ route('student.update', $edit->id) }}" method="post">
+            <form action="{{ route('instructor.update', $edit->id) }}" method="post">
                 @csrf
                 @method('PUT')
                 <div class="mb-3">
                     <label for="">Name *</label>
                     <input type="text" name="name" class="form-control" value="{{ $edit->name }}"
-                        placeholder="Enter Student Name" required>
+                        placeholder="Enter Instructor Name" required>
                 </div>
                 <div class="mb-3">
                     <label for="">Major *</label>
@@ -33,30 +33,6 @@
                     <label for="">Name *</label>
                     <input type="number" name="phone" value="{{ $edit->phone }}" class="form-control"
                         placeholder="Enter Phone Number Ex:0812345678" required>
-                </div>
-                <div class="mb-3">
-                    <label for="">Email *</label>
-                    <input type="email" name="email"
-                        class="form-control @error('email') is-invalid
-                    @enderror"
-                        placeholder="Enter User Email" value="{{ $edit->user->email }}">
-                    @error('email')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                    @enderror
-                </div>
-                <div class="mb-3">
-                    <label for="">Password *</label>
-                    <input type="password" name="password"
-                        class="form-control @error('password') is-invalid
-                    @enderror"
-                        placeholder="Enter User Password">
-                    @error('password')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                    @enderror
                 </div>
                 <button type="submit" class="btn btn-primary">Save</button>
                 <a href="{{ url()->previous() }}" class="text-secondary">Back</a>

@@ -29,15 +29,8 @@
                             <td>
                                 <a href="{{ route('user.edit', $user->id) }}" class="btn btn-success icon">
                                     <i class="bi bi-pencil"></i></a>
-                                <form action="{{ route('user.destroy', $user->id) }}" method="post" class="d-inline"
-                                    data-confirm-delete="true">
-                                    @csrf
-                                    @method('DELETE')
-
-                                    <button class="btn btn-danger">
-                                        <i class="bi bi-trash-fill"></i>
-                                    </button>
-                                </form>
+                                <a href="{{ route('user.destroy', $user->id) }}" class="btn btn-danger icon"
+                                    data-confirm-delete="true"><i class="bi bi-trash"></i></a>
                             </td>
                         </tr>
                     @endforeach

@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('title', 'Create New Student')
+@section('title', 'Create New Instructor')
 @section('content')
     <div class="card">
         <div class="card-header">
@@ -8,38 +8,54 @@
             </div>
         </div>
         <div class="card-body">
-            <form action="{{ route('student.update', $edit->id) }}" method="post">
+            <form action="{{ route('instructor.store') }}" method="post">
                 @csrf
-                @method('PUT')
                 <div class="mb-3">
                     <label for="">Name *</label>
-                    <input type="text" name="name" class="form-control" value="{{ $edit->name }}"
-                        placeholder="Enter Student Name" required>
+                    <input type="text" name="name"
+                        class="form-control @error('name') is-invalid
+                    @enderror"
+                        placeholder="Enter Student Name" value="{{ old('name') }}">
+                    @error('name')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
                 <div class="mb-3">
                     <label for="">Major *</label>
-                    <select class="form-select" name="major_id" id="">
-                        {{--  @foreach ($majors as $major)
-                            <option value="{{ $major->id }}">
-                                {{ $major->name }}</option>
-                        @endforeach  --}}
+                    <select class="form-select @error('phone') is-invalid
+                    @enderror" name="major_id"
+                        id="">
+                        <option value="">--Select Major--</option>
                         @foreach ($majors as $major)
-                            <option value="{{ $major->id }}" {{ $major->id == $edit->major_id ? 'selected' : '' }}>
-                                {{ $major->name }}</option>
+                            <option value="{{ $major->id }}">{{ $major->name }}</option>
                         @endforeach
                     </select>
+                    @error('major_id')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="">Name *</label>
-                    <input type="number" name="phone" value="{{ $edit->phone }}" class="form-control"
-                        placeholder="Enter Phone Number Ex:0812345678" required>
+                    <label for="">Phone *</label>
+                    <input type="number" name="phone"
+                        class="form-control @error('phone') is-invalid
+                    @enderror"
+                        placeholder="Enter Phone Number Ex:0812345678" value="{{ old('phone') }}">
+                    @error('phone')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
                 </div>
                 <div class="mb-3">
                     <label for="">Email *</label>
                     <input type="email" name="email"
                         class="form-control @error('email') is-invalid
                     @enderror"
-                        placeholder="Enter User Email" value="{{ $edit->user->email }}">
+                        placeholder="Enter User Email" value="{{ old('email') }}">
                     @error('email')
                         <div class="invalid-feedback">
                             {{ $message }}
