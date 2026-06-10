@@ -7,6 +7,7 @@ use App\Models\Major;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Validation\Rule;
 
 class InstructorController extends Controller
 {
@@ -39,14 +40,14 @@ class InstructorController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, string $id)
     {
         $validate = $request->validate(
             [
                 'major_id' => 'required',
                 'name' => 'required',
                 'phone' => 'nullable|min:9',
-                'email' => 'required|unique:users,email',
+                'email' => ['required', Rule::unique('users', 'email')->ignore($id)],
                 'password' => 'required|min:6'
             ],
             [
@@ -75,7 +76,7 @@ class InstructorController extends Controller
             return redirect()->to('instructor');
         } catch (\Throwable $th) {
             DB::rollBack();
-            return $th->getMessage();
+            // return $th->getMessage();
             toast('Fail!!', $th->getMessage());
             return back()->withInput();
         }
@@ -111,7 +112,8 @@ class InstructorController extends Controller
                 'major_id' => 'required',
                 'name' => 'required',
                 'phone' => 'nullable',
-                'email' => 'required|unique:users,email',
+                'email' => ['required', Rule::unique('users', 'email')->ignore($instructor->user->id)],
+                'password' => 'nullable|min:6',
             ],
             [
                 'major_id.required' => 'Major is required.',
