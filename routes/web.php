@@ -22,7 +22,7 @@ Route::livewire('/post/create', 'pages::post.create');
 Route::get('profile', [ProfileController::class, 'index']);
 
 // Login
-Route::get('/', [LoginController::class, 'index'])->name('login');
+Route::get('/login', [LoginController::class, 'index'])->name('login');
 
 Route::post('action-login', [LoginController::class, 'actionLogin'])->name('action-login');
 Route::post('action-logout', [LoginController::class, 'actionLogout'])->name('action-logout');
